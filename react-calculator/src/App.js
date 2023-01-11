@@ -3,25 +3,14 @@ import { useState } from "react";
 
 function App() {
   const [calc, setCalc] = useState("");
-  const [result, setResult] = useState("");
-  // const [firstNumber, secondNumber] = useState("0");
-
-  const ops = ["/", "*", "+", "/", "."];
 
   const updateCalc = (value) => {
-    // if (
-    //   (ops.includes(value) && calc === "") ||
-    //   (ops.includes(value) && ops.includes(calc.slice(-1)))
-    // ) {
-    //   return;
-    // }
     setCalc(calc + value);
   };
 
-  // const calculate = () => {
-  //   let numOf = Number(setCalc);
-  //   return numOf;
-  // };
+  const calculate = () => {
+    setCalc(eval(calc).toString());
+  };
 
   const deleteLast = () => {
     if (calc == "") {
@@ -62,7 +51,7 @@ function App() {
             <div className="sideFive">
               <button onClick={() => updateCalc("0")}>0</button>
               <button onClick={() => updateCalc(".")}>.</button>
-              <button>=</button>
+              <button onClick={calculate}>=</button>
             </div>
           </div>
         </div>
